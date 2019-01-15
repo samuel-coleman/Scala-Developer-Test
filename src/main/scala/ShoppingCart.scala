@@ -1,15 +1,31 @@
 object ShoppingCart extends App{
 
   def checkout(listFruit:List[String]): Double ={
-    var cost:Double = 0.00
-    for(i <- 0 to listFruit.length-1){
+    var amountApple = 0
+    var amountOrange =0
+    for(i <-  0 until listFruit.length){
       listFruit(i) match{
-        case "Apple" => cost += 0.25
-        case "Orange" => cost +=0.60
+        case "Apple" => amountApple += 1
+        case "Orange" => amountOrange += 1
       }
     }
-    cost
+    apples(amountApple)+oranges(amountOrange)
   }
 
-  println(s"Cost is: £${checkout(List("Apple","Orange"))}")
+  def apples(numApples:Int):Double={
+    val numDeals = numApples/2
+    var totalCost = numDeals*0.60
+    if(numApples%2 !=0)totalCost+=0.60
+    totalCost
+  }
+
+  def oranges(numOranges:Int):Double={
+    val numDeals = numOranges/3
+    var totalCost = numDeals*0.50
+    if(numOranges%3 != 0 )totalCost+=(numOranges%3)*0.25
+    totalCost
+  }
+
+  println(s"Cost is: £${checkout(List("Apple","Orange","Apple","Orange","Orange","Apple","Orange"))}")
+
 }
