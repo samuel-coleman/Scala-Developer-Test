@@ -13,15 +13,13 @@ object ShoppingCart extends App{
   }
 
   def apples(numApples:Int):Double={
-    val numDeals = numApples/2
-    var totalCost = numDeals*0.60
+    var totalCost = (numApples/2)*0.60
     if(numApples%2 !=0)totalCost+=0.60
     totalCost
   }
 
   def oranges(numOranges:Int):Double={
-    val numDeals = numOranges/3
-    var totalCost = numDeals*0.50
+    var totalCost = (numOranges/3)*0.50
     if(numOranges%3 != 0 )totalCost+=(numOranges%3)*0.25
     totalCost
   }
